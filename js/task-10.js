@@ -3,30 +3,42 @@
 const inputEl = document.querySelector('input');
 const createEl = document.querySelector('[data-create]');
 const destroyEl = document.querySelector('[data-destroy]');
-
+const addNewDiv = document.createDocumentFragment();
 const boxesEl = document.querySelector('#boxes');
 
-let amount = inputEl.value;
 
-console.log(amount);
-
-const createBoxes = amount => {
-  let count = document.createElement("div");
-  let ru = count * amount;
-  ru.push(boxesEl);
-  
-};
-
-
-inputEl.addEventListener('focus ', () => {
-  const amount = inputEl.value;
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
-);
 
-createEl.addEventListener('click', () => {
-  createBoxes();
-});
+let size = 20;
+
+function createNewEl() {
+  let createOneBoxesEl = document.createElement("div");
+  createOneBoxesEl.style.background = getRandomHexColor();
+
+  size += 10;
+
+  createOneBoxesEl.style.width = `${size}px`;
+  createOneBoxesEl.style.height = `${size}px`;
+  
+  return createOneBoxesEl;
+}
+ 
+
+function createBoxes(amount) {
+
+    for (let i = 1; i <= amount; i += 1) {
+      addNewDiv.appendChild(createNewEl());
+}
+  boxesEl.appendChild(addNewDiv); 
+}
+  
+
+function createBoxexByClick() { createBoxes(inputEl.value); inputEl.value = "";};
+createEl.addEventListener('click', createBoxexByClick);
 
 
+function destroyBoxes() { boxesEl.textContent = ""; size = 20; }
+destroyEl.addEventListener('click', destroyBoxes);
 
-const destroyBoxes = () => boxesEl.reset();
