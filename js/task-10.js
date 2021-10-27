@@ -42,3 +42,20 @@ createEl.addEventListener('click', createBoxexByClick);
 function destroyBoxes() { boxesEl.textContent = ""; size = 20; }
 destroyEl.addEventListener('click', destroyBoxes);
 
+
+
+
+// function createBoxes(amount) {
+
+//   const newArray = [];
+// console.log()
+
+
+//   newArray[amount] = amount;
+//   console.log(newArray);
+
+//   newArray.forEach((el) => {
+//     addNewDiv.appendChild(createNewEl());
+//   });
+//   boxesEl.appendChild(addNewDiv); 
+// }
